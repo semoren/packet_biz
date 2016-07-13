@@ -27,8 +27,10 @@ public class MD5Util {
 		
 		inputText = inputText + SALT;
 		try {
-			MessageDigest digest = MessageDigest.getInstance("md5");
+			MessageDigest digest = MessageDigest.getInstance("MD5");
 			digest.update(inputText.getBytes("UTF8"));
+			byte b[] = digest.digest();
+			return hex(b);
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		} catch (UnsupportedEncodingException e) {
@@ -36,4 +38,20 @@ public class MD5Util {
 		}
 		return encryptText;
 	}
+	
+	// 返回十六进制字符串
+		private static String hex(byte[] arr) {
+
+			StringBuffer sb = new StringBuffer();
+
+			for (int i = 0; i < arr.length; ++i) {
+
+				sb.append(Integer.toHexString((arr[i] & 0xFF) | 0x100).substring(1,
+						3));
+
+			}
+
+			return sb.toString();
+
+		}
 }
