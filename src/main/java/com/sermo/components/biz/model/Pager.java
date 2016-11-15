@@ -10,7 +10,7 @@ public class Pager<T> {
 	
 	public static final int DEFAULT_PAGE = 1;
 	
-	public static final int DEFAULT_ROW = 50;
+	public static final int DEFAULT_ROW = 20;
 	
 	/*
 	 * 当前页 
